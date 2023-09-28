@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script displays "Best School" 10 times, with a special message on the 9th iteration.
+count=0
+while [ "$count" -lt 10 ]; do
+    if [ "$count" -eq 8 ]; then
+        # Display "Best School" and then "Hi" on a new line for the 9th iteration
+        echo "Best School"
+        echo "Hi"
+    else
+        # Display "Best School" for all other iterations
+        echo "Best School"
+    fi
+    
+    # Increment the counter
+    ((count++))
+done
