@@ -1,3 +1,5 @@
-Host 172.17.0.18
-  IdentityFile ~/.ssh/school
-  PasswordAuthentication no
+Host web-01
+	HostName 34.202.158.77
+	User ubuntu
+	IdentityFile ~/.ssh/school
+	PasswordAuthentication no
