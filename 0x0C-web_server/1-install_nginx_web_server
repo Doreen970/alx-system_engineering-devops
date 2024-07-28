@@ -29,4 +29,32 @@ echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
 # Restarting nginx
 sudo service nginx restart
 
-echo -e "\nCompleted. ✅\n"
+echo -e "\nCompleted. ✅\n"#!/usr/bin/env bash
+# This script installs Nginx on an Ubuntu machine, configures it to listen on port 80,
+# and serves a page that contains "Hello World!" at the root path.
+
+# Update package list and install Nginx
+apt-get update
+apt-get install -y nginx
+
+# Create the HTML file to serve at the root path
+echo "Hello World!" > /var/www/html/index.html
+
+# Restart Nginx to apply changes (without using systemctl)
+service nginx restart
+
+# Confirm Nginx is listening on port 80
+if netstat -tuln | grep ":80"; then
+  echo "Nginx is listening on port 80."
+else
+  echo "Error: Nginx is not listening on port 80."
+  exit 1
+fi
+
+# Test the configuration by sending a request to localhost
+if curl -s http://localhost | grep -q "Hello World!"; then
+  echo "Nginx is serving the correct page."
+else
+  echo "Error: Nginx is not serving the correct page."
+  exit 1
+fi
